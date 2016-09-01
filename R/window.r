@@ -5,11 +5,17 @@ rp.control <- function(title = "", size=c(100, 100),
   panel <- w.window(title, size, background, panelname, ftype = "old", ...)  
   panel$panelname <- panelname
 
-  # handshake(tkbind, panel$.handle, "<Destroy>", 
-    # function() {
-      
-      # # rp.control.dispose(panel)
-      
+  handshake(tkbind, panel$.handle, "<Destroy>", 
+    function() {
+      cat("In the destoy handler that JM added while not really knowing what he was doing :p\n")
+      if (exists(panel$panelname, envir = .rpenv))  {
+        assign(panel$panelname, NULL, envir=.rpenv)
+        cat("Assigned panelname to NULL\n")
+      } else {
+        cat("panelname doesn't seem to exist in the env??\n")
+      }
+      cat("Finished destory function...\n")
+    })
       # if (!exists(panelname, envir = .rpenv)) return(invisible())
 
       # if (exists(paste(panelname,"$.handle", sep = ""), envir = .rpenv)) 
