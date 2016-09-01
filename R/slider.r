@@ -160,6 +160,8 @@ w.slider <- function(parent, initval, from, to, action = I,
 
       #      sl$.widget <- handshake(tkscale, widget$.handle, from=wfrom, to=wto, showvalue=showvalue, orient=orient, resolution=resolution, variable=widget$.var[[i]], length=200)
       handshake(tkbind, sl$.widget, "<B1-Motion>", f)
+      handshake(tkbind, sl$.widget, "<ButtonRelease-1>", f)
+
       w.appearancewidget(sl, font, foreground, background)
       widget$.sl[i] <- list(sl)
     }    
@@ -213,6 +215,7 @@ w.slider <- function(parent, initval, from, to, action = I,
                               variable=widget$.var[[i]])
 
       handshake(tkbind, sl$.widget, "<B1-Motion>", f)
+      handshake(tkbind, sl$.widget, "<ButtonRelease-1>", f)
       #  The statement below applies to the slider only
 
       w.appearancewidget(sl, font, foreground, background)
