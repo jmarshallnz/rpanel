@@ -38,6 +38,10 @@ rp.slider <- function(panel, variable, from, to, action = I,
   f <- function(val) {
     valexisting <- rp.var.get(panelname, varname)
     names(val)  <- names(valexisting)
+    cat("Calling the action function with val=:\n")
+    print(val)
+    cat("valexisting=:\n")
+    print(valexisting)
     rp.var.put(panelname, varname, val)
     panel <- rp.control.get(panelname) 
     panel <- action(panel)
